@@ -1,1 +1,2 @@
-# use-height-transition
+# use-auto-collapse
+

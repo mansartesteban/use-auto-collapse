@@ -1,0 +1,23 @@
+{
+  "name": "@mansartesteban/use-auto-collapse",
+  "version": "1.0.0",
+  "description": "Create auto collapse toggle with height transition. Works with dynamic height.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "height animation",
+    "height transition",
+    "auto collapse",
+    "toggle height",
+    "toggle animation",
+    "auto height",
+    "dock"
+  ],
+  "author": "Esteban Mansart",
+  "license": "ISC",
+  "dependencies": {
+    "vite": "^5.4.10"
+  }
+}
