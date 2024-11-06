@@ -40,8 +40,8 @@ export default (element, options) => {
       requestAnimationFrame(() => {
         element.style.height = "0";
       });
-      opened.value = false;
-      res(opened.value);
+      opened = false;
+      res(opened);
     });
   };
 
@@ -56,8 +56,8 @@ export default (element, options) => {
         element.style.height = "auto";
         element.removeEventListener("transitionend", handleTransition);
       });
-      opened.value = true;
-      res(opened.value);
+      opened = true;
+      res(opened);
     });
   };
 
@@ -65,7 +65,7 @@ export default (element, options) => {
    * Depending on the current state of the element, will close or open it
    * @returns Promise
    */
-  const toggle = () => (opened.value ? close() : open());
+  const toggle = () => (opened ? close() : open());
 
   /**
    * Internal method to initialize the HtmlElement
@@ -95,7 +95,7 @@ export default (element, options) => {
    * Recalculate the height of the element
    */
   const refresh = () => {
-    element.style.height = opened.value ? "auto" : "0";
+    element.style.height = opened ? "auto" : "0";
   };
 
   if (!(element instanceof Element)) {
