@@ -65,7 +65,13 @@ export default (element, options) => {
    * Depending on the current state of the element, will close or open it
    * @returns Promise
    */
-  const toggle = () => (opened ? close() : open());
+  const toggle = (forceState) => {
+    if (forceState === undefined) {
+      forceState ? opened() : closed();
+    } else {
+      opened ? close() : open();
+    }
+  };
 
   /**
    * Internal method to initialize the HtmlElement
@@ -88,7 +94,7 @@ export default (element, options) => {
     }
 
     element.style.transition = `height ${options.duration}ms ${options.timingFunction}`;
-    element.style.overflow = "hidden";
+    element.style.overflow = "clip";
   };
 
   /**
