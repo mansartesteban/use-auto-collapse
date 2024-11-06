@@ -1,4 +1,4 @@
-let defaultOptions = {
+const defaultOptions = {
   /**
    * The CSS timing function use to apply transition
    */
@@ -13,11 +13,21 @@ let defaultOptions = {
    * Apply some classes to define the default behavior depending on the opening state at first
    */
   openedByDefault: true,
+
+  /**
+   * Minimum height of the container (css value : px, %, cm, pt, rem, ch ...)
+   */
+  minHeight: undefined,
+
+  /**
+   * Maximum height of the container (css value : px, %, cm, pt, rem, ch ...)
+   */
+  maxHeight: undefined,
 };
 
 export default (element, options) => {
   options = { ...defaultOptions, ...options };
-  const opened = ref(options.openedByDefault);
+  const opened = options.openedByDefault;
 
   /**
    * The function which handles the close transition
@@ -26,6 +36,7 @@ export default (element, options) => {
   const close = () => {
     return new Promise((res) => {
       element.style.height = element.scrollHeight + "px";
+
       requestAnimationFrame(() => {
         element.style.height = "0";
       });
@@ -62,6 +73,20 @@ export default (element, options) => {
    */
   const initElement = (element) => {
     element.style.height = options.openedByDefault ? "auto" : "0";
+    if (options.minHeight !== undefined) {
+      if (typeof options.minHeight === "number") {
+        options.minHeight += "px";
+      }
+      element.style.minHeight = options.minHeight;
+    }
+
+    if (options.maxHeight !== undefined) {
+      if (typeof options.maxHeight === "number") {
+        options.maxHeight += "px";
+      }
+      element.style.maxHeight = options.maxHeight;
+    }
+
     element.style.transition = `height ${options.duration}ms ${options.timingFunction}`;
     element.style.overflow = "hidden";
   };
@@ -74,14 +99,10 @@ export default (element, options) => {
   };
 
   if (!(element instanceof Element)) {
-    onMounted(() => {
-      element = document.querySelector(element);
-
-      initElement(element);
-    });
-  } else {
-    initElement(element);
+    throw new Error("Provided element must be an instance of Element");
   }
+
+  initElement(element);
 
   return {
     toggle,

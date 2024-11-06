@@ -1,9 +1,11 @@
 {
   "name": "@mansartesteban/use-auto-collapse",
   "version": "1.0.0",
-  "description": "Create auto collapse toggle with height transition. Works with dynamic height.",
-  "main": "index.js",
+  "description": "Create auto collapse toggle with auto height transition. Works with dynamic height.",
+  "main": "dist/use-auto-collapse.js",
+  "type": "module",
   "scripts": {
+    "build": "pnpm i && vite build .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -19,5 +21,9 @@
   "license": "ISC",
   "dependencies": {
     "vite": "^5.4.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mansartesteban/use-auto-collapse"
   }
 }
