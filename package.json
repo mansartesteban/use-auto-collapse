@@ -1,6 +1,6 @@
 {
   "name": "@mansartesteban/use-auto-collapse",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Create auto collapse toggle with auto height transition. Works with dynamic height.",
   "main": "dist/use-auto-collapse.js",
   "type": "module",
