@@ -21,28 +21,28 @@ const g = {
   maxHeight: void 0
 }, f = (t, e) => {
   e = { ...g, ...e };
-  const n = e.openedByDefault, a = () => new Promise((i) => {
+  const n = e.openedByDefault, h = () => new Promise((i) => {
     t.style.height = t.scrollHeight + "px", requestAnimationFrame(() => {
       t.style.height = "0";
-    }), n.value = !1, i(n.value);
-  }), h = () => new Promise((i) => {
-    t.style.height = t.scrollHeight + "px", t.addEventListener("transitionend", function s() {
-      t.style.height = "auto", t.removeEventListener("transitionend", s);
-    }), n.value = !0, i(n.value);
-  }), r = () => n.value ? a() : h(), u = (i) => {
+    }), n = !1, i(n);
+  }), r = () => new Promise((i) => {
+    t.style.height = t.scrollHeight + "px", t.addEventListener("transitionend", function u() {
+      t.style.height = "auto", t.removeEventListener("transitionend", u);
+    }), n = !0, i(n);
+  }), a = () => n ? h() : r(), d = (i) => {
     i.style.height = e.openedByDefault ? "auto" : "0", e.minHeight !== void 0 && (typeof e.minHeight == "number" && (e.minHeight += "px"), i.style.minHeight = e.minHeight), e.maxHeight !== void 0 && (typeof e.maxHeight == "number" && (e.maxHeight += "px"), i.style.maxHeight = e.maxHeight), i.style.transition = `height ${e.duration}ms ${e.timingFunction}`, i.style.overflow = "hidden";
-  }, d = () => {
-    t.style.height = n.value ? "auto" : "0";
+  }, s = () => {
+    t.style.height = n ? "auto" : "0";
   };
   if (!(t instanceof Element))
     throw new Error("Provided element must be an instance of Element");
-  return u(t), {
-    toggle: r,
-    close: a,
-    open: h,
-    hide: a,
-    show: h,
-    refresh: d,
+  return d(t), {
+    toggle: a,
+    close: h,
+    open: r,
+    hide: h,
+    show: r,
+    refresh: s,
     opened: n
   };
 };
