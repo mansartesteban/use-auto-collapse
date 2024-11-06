@@ -27,7 +27,7 @@ const defaultOptions = {
 
 export default (element, options) => {
   options = { ...defaultOptions, ...options };
-  const opened = options.openedByDefault;
+  let opened = options.openedByDefault;
 
   /**
    * The function which handles the close transition

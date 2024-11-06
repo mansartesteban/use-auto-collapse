@@ -21,17 +21,18 @@ const g = {
   maxHeight: void 0
 }, f = (t, e) => {
   e = { ...g, ...e };
-  const n = e.openedByDefault, h = () => new Promise((i) => {
+  let n = e.openedByDefault;
+  const h = () => new Promise((i) => {
     t.style.height = t.scrollHeight + "px", requestAnimationFrame(() => {
       t.style.height = "0";
     }), n = !1, i(n);
   }), r = () => new Promise((i) => {
-    t.style.height = t.scrollHeight + "px", t.addEventListener("transitionend", function u() {
-      t.style.height = "auto", t.removeEventListener("transitionend", u);
+    t.style.height = t.scrollHeight + "px", t.addEventListener("transitionend", function s() {
+      t.style.height = "auto", t.removeEventListener("transitionend", s);
     }), n = !0, i(n);
   }), a = () => n ? h() : r(), d = (i) => {
     i.style.height = e.openedByDefault ? "auto" : "0", e.minHeight !== void 0 && (typeof e.minHeight == "number" && (e.minHeight += "px"), i.style.minHeight = e.minHeight), e.maxHeight !== void 0 && (typeof e.maxHeight == "number" && (e.maxHeight += "px"), i.style.maxHeight = e.maxHeight), i.style.transition = `height ${e.duration}ms ${e.timingFunction}`, i.style.overflow = "hidden";
-  }, s = () => {
+  }, u = () => {
     t.style.height = n ? "auto" : "0";
   };
   if (!(t instanceof Element))
@@ -42,7 +43,7 @@ const g = {
     open: r,
     hide: h,
     show: r,
-    refresh: s,
+    refresh: u,
     opened: n
   };
 };
