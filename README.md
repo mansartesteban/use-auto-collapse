@@ -78,9 +78,13 @@ Note : If `minHeight` or `maxHeight` is a number, it will be automatically conve
 
 ## API
 
-### `toggle(): Promise<Boolean>`
+### `toggle(forceState: Boolean): Promise<Boolean>`
 
 Toggles the element between open and closed states. Useful when you want to create a button that opens and closes the content.
+
+**Parameters** :
+
+- **forceState**: `Boolean` — Used to force the state of the collapsing container. If `true` will force the opening of the container, if `false` will force the closing of the container.
 
 **Returns**: `Promise` — Resolves with the new state (`true` if opened, `false` if closed).
 
