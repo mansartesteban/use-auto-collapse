@@ -67,9 +67,9 @@ export default (element, options) => {
    */
   const toggle = (forceState) => {
     if (forceState !== undefined) {
-      forceState ? open() : close();
+      return forceState ? open() : close();
     } else {
-      opened ? close() : open();
+      return opened ? close() : open();
     }
   };
 

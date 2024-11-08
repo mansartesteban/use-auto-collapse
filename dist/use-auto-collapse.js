@@ -19,32 +19,30 @@ const g = {
    * Maximum height of the container (css value : px, %, cm, pt, rem, ch ...)
    */
   maxHeight: void 0
-}, f = (t, e) => {
+}, f = (i, e) => {
   e = { ...g, ...e };
   let n = e.openedByDefault;
-  const h = () => new Promise((i) => {
-    t.style.height = t.scrollHeight + "px", requestAnimationFrame(() => {
-      t.style.height = "0";
-    }), n = !1, i(n);
-  }), r = () => new Promise((i) => {
-    t.style.height = t.scrollHeight + "px", t.addEventListener("transitionend", function s() {
-      t.style.height = "auto", t.removeEventListener("transitionend", s);
-    }), n = !0, i(n);
-  }), a = (i) => {
-    i !== void 0 ? i ? r() : h() : n ? h() : r();
-  }, u = (i) => {
-    i.style.height = e.openedByDefault ? "auto" : "0", e.minHeight !== void 0 && (typeof e.minHeight == "number" && (e.minHeight += "px"), i.style.minHeight = e.minHeight), e.maxHeight !== void 0 && (typeof e.maxHeight == "number" && (e.maxHeight += "px"), i.style.maxHeight = e.maxHeight), i.style.transition = `height ${e.duration}ms ${e.timingFunction}`, i.style.overflow = "clip";
+  const r = () => new Promise((t) => {
+    i.style.height = i.scrollHeight + "px", requestAnimationFrame(() => {
+      i.style.height = "0";
+    }), n = !1, t(n);
+  }), h = () => new Promise((t) => {
+    i.style.height = i.scrollHeight + "px", i.addEventListener("transitionend", function s() {
+      i.style.height = "auto", i.removeEventListener("transitionend", s);
+    }), n = !0, t(n);
+  }), u = (t) => t !== void 0 ? t ? h() : r() : n ? r() : h(), a = (t) => {
+    t.style.height = e.openedByDefault ? "auto" : "0", e.minHeight !== void 0 && (typeof e.minHeight == "number" && (e.minHeight += "px"), t.style.minHeight = e.minHeight), e.maxHeight !== void 0 && (typeof e.maxHeight == "number" && (e.maxHeight += "px"), t.style.maxHeight = e.maxHeight), t.style.transition = `height ${e.duration}ms ${e.timingFunction}`, t.style.overflow = "clip";
   }, d = () => {
-    t.style.height = n ? "auto" : "0";
+    i.style.height = n ? "auto" : "0";
   };
-  if (!(t instanceof Element))
+  if (!(i instanceof Element))
     throw new Error("Provided element must be an instance of Element");
-  return u(t), {
-    toggle: a,
-    close: h,
-    open: r,
-    hide: h,
-    show: r,
+  return a(i), {
+    toggle: u,
+    close: r,
+    open: h,
+    hide: r,
+    show: h,
     refresh: d,
     opened: n
   };
