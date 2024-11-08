@@ -146,3 +146,14 @@ document.querySelector("#toggleButton").addEventListener("click", () => {
 The transition is applied using the **height** property of the element.
 The [overflow property is set to **clip**](https://web.dev/learn/css/overflow?hl=fr#values) to prevent content overflow during transitions.
 Ensure that the content inside the element does not have a height restriction (such as a fixed height) that conflicts with the dynamic height adjustments.
+
+## TODOs
+
+- Add hooks
+  - onBeforeToggle
+  - onBeforeOpen
+  - onBeforeClose
+  - onToggled
+  - onOpened
+  - onClosed
+- Verify if "opened" returned variable is reative and make it reactive if not

@@ -27,25 +27,25 @@ const g = {
       t.style.height = "0";
     }), n = !1, i(n);
   }), r = () => new Promise((i) => {
-    t.style.height = t.scrollHeight + "px", t.addEventListener("transitionend", function u() {
-      t.style.height = "auto", t.removeEventListener("transitionend", u);
+    t.style.height = t.scrollHeight + "px", t.addEventListener("transitionend", function s() {
+      t.style.height = "auto", t.removeEventListener("transitionend", s);
     }), n = !0, i(n);
   }), a = (i) => {
-    i === void 0 ? i ? n() : closed() : n ? h() : r();
-  }, d = (i) => {
+    i === void 0 ? i ? r() : h() : n ? h() : r();
+  }, u = (i) => {
     i.style.height = e.openedByDefault ? "auto" : "0", e.minHeight !== void 0 && (typeof e.minHeight == "number" && (e.minHeight += "px"), i.style.minHeight = e.minHeight), e.maxHeight !== void 0 && (typeof e.maxHeight == "number" && (e.maxHeight += "px"), i.style.maxHeight = e.maxHeight), i.style.transition = `height ${e.duration}ms ${e.timingFunction}`, i.style.overflow = "clip";
-  }, s = () => {
+  }, d = () => {
     t.style.height = n ? "auto" : "0";
   };
   if (!(t instanceof Element))
     throw new Error("Provided element must be an instance of Element");
-  return d(t), {
+  return u(t), {
     toggle: a,
     close: h,
     open: r,
     hide: h,
     show: r,
-    refresh: s,
+    refresh: d,
     opened: n
   };
 };
