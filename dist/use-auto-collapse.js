@@ -31,7 +31,7 @@ const g = {
       t.style.height = "auto", t.removeEventListener("transitionend", s);
     }), n = !0, i(n);
   }), a = (i) => {
-    i === void 0 ? i ? r() : h() : n ? h() : r();
+    i !== void 0 ? i ? r() : h() : n ? h() : r();
   }, u = (i) => {
     i.style.height = e.openedByDefault ? "auto" : "0", e.minHeight !== void 0 && (typeof e.minHeight == "number" && (e.minHeight += "px"), i.style.minHeight = e.minHeight), e.maxHeight !== void 0 && (typeof e.maxHeight == "number" && (e.maxHeight += "px"), i.style.maxHeight = e.maxHeight), i.style.transition = `height ${e.duration}ms ${e.timingFunction}`, i.style.overflow = "clip";
   }, d = () => {
